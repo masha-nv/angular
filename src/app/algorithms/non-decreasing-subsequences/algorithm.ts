@@ -1,18 +1,31 @@
-export async function findSubsequences(arr: number[], curr: number[]) {
-    const set = new Set<string>();
+export interface arrElement {
+    val: number,
+    isActive: boolean,
+    isPrevious: boolean
+}
 
-    async function helper(idx: number, curr: number[]) {
+export async function findSubsequences(arr: arrElement[], curr: arrElement[], set: Set<string>) {
+    async function helper(idx: number, curr: arrElement[]) {
         if (curr.length >= 2) {
-            set.add(curr.slice().join('#'));
+            set.add(curr.slice().map(el => el.val).join('#'));
         }
 
         for (let i = idx; i<arr.length; i++) {
-            if (!curr.length || arr[i] >= curr[curr.length-1]) {
-                curr.push(arr[i]);
+            if (!curr.length || arr[i].val >= curr[curr.length-1].val) {
+                arr[i].isActive = true;
+                if(curr.at(-1)) curr[curr.length-1].isPrevious = true;
                 await new Promise(resolve => {
-                    setTimeout(() => resolve(true), 100)
+                    setTimeout(() => {
+                        curr.push(arr[i]);
+                        arr[i].isActive = false;
+                        if(curr.at(-2)) curr[curr.length-2].isPrevious = false
+                        resolve(true);
+                    }, 700);
+
                 })
+
                 await helper(i+1, curr);
+
                 curr.pop();
             }
         }

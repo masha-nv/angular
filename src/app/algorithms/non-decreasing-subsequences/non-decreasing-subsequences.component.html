@@ -3,9 +3,9 @@
 <p #container></p>
 
 <div class="content">
-    <div><span *ngFor="let number of arr; let i = index">{{number}}&nbsp;&nbsp;</span> </div>
+    <div><array-element *ngFor="let el of arr; let i = index" [val]="el.val" [isActive]="el.isActive" ></array-element> </div>
     <div class="set">
-        <span *ngFor="let item of sequences">{{item}}&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <span *ngFor="let item of set">{{item}}&nbsp;&nbsp;&nbsp;&nbsp;</span>
     </div>
-    <div><span *ngFor="let item of current">{{item}}</span></div>
+    <div><array-element *ngFor="let item of current" [val]="item.val"  [isPrevious]="item.isPrevious">{{item.val}}</array-element></div>
 </div>
