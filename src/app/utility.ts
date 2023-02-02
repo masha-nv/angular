@@ -1,6 +1,6 @@
 import { ElementRef } from "@angular/core";
 
-export function getDynamicSentence(sentence: string, el: ElementRef, speed: number) {
+export async function getDynamicSentence(sentence: string, el: ElementRef, speed: number) {
     return new Promise((resolve) => {
         let i = 0;
         const intervalId = setInterval(() => {

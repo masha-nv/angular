@@ -1,0 +1,36 @@
+.component-wrapper {
+    margin: 5rem;
+}
+
+.container {
+    display: inline-block;
+    margin-right: 2rem;
+}
+
+.copy {
+    cursor: pointer;
+}
+
+.array {
+    margin: 3rem 0;
+    display: flex;
+    align-items: center;
+}
+
+.edit {
+    margin-left: 0.7rem;
+    width: fit-content;
+    font-size: 1.25rem;
+    &::before {
+        content: '|';
+        color: grey;
+        padding-right: 0.7rem;
+        cursor: pointer;
+    }
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

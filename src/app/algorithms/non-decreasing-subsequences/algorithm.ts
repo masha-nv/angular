@@ -20,7 +20,7 @@ export async function findSubsequences(arr: arrElement[], curr: arrElement[], se
                         arr[i].isActive = false;
                         if(curr.at(-2)) curr[curr.length-2].isPrevious = false
                         resolve(true);
-                    }, 700);
+                    }, 90);
 
                 })
 
