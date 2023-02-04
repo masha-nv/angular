@@ -2,15 +2,15 @@
     <h1 >Non-decreasing Subsequences</h1>
 
     <p class="container" #container></p>
-    <mat-icon *ngIf="isProblemStatmentReady && !isCopied" class="copy" matTooltip="Copy Text" 
+    <mat-icon *ngIf="isProblemStatmentReady && !isCopied" class="copy" matTooltip="Copy Text"
     (click)="copyProblemStatement(container.innerText)" class="material-symbols-outlined">content_copy</mat-icon>
     <mat-icon *ngIf="isCopied" matTooltip="Copied!">done</mat-icon>
 
 
     <div class="content" *ngIf="arr.length">
         <div class="array" *ngIf="!isEditing; else editingTemplate">
-            <array-element *ngFor="let el of arr; let i = index" [val]="el.val" [isActive]="el.isActive" ></array-element> 
-            <mat-icon class="edit" (click)="isEditing = true">edit</mat-icon>
+            <array-element *ngFor="let el of arr; let i = index" [val]="el.val" [isActive]="el.isActive" ></array-element>
+            <mat-icon [appTooltip]="'Edit numbers'" [delay]="500" class="edit" (click)="isEditing = true">edit</mat-icon>
         </div>
 
         <div class="set">
@@ -19,13 +19,18 @@
         <div><array-element *ngFor="let item of current" [val]="item.val"  [isPrevious]="item.isPrevious">{{item.val}}</array-element></div>
         <br><br><br><br>
         <!-- <div #solution class="solution"></div> -->
-        
+
     </div>
-</div>
+    <div class="history-section">
+      <h1>History</h1>
+      <app-history></app-history>
+    </div>
+  </div>
+
 
 <ng-template #editingTemplate>
     <mat-form-field>
-        <input type="number" matInput #input (keypress)="handleKeyPress($event)" maxlength="3">
+        <input type="number" matInput #input [(ngModel)]="numbersStr" (keypress)="handleKeyPress($event)">
         <button *ngIf="input.value" matSuffix mat-icon-button aria-label="Clear" (click)="input.value=''">
             <mat-icon>close</mat-icon>
           </button>

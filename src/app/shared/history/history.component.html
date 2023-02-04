@@ -1,0 +1,18 @@
+<div class="log-container">
+    <table>
+        <thead>
+            <tr>
+                <th>Previous Value</th>
+                <th>Current Value</th>
+                <th>Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let log of logs">
+                <td>{{log.prevValue}}</td>
+                <td>{{log.currValue}}</td>
+                <td>{{log.time}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

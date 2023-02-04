@@ -1,10 +1,12 @@
-import { ChangeDetectorRef, Component, ElementRef, Injector, OnChanges, OnInit, SimpleChanges, ViewChild } from "@angular/core";
+import { ChangeDetectorRef, Component, ElementRef, EventEmitter, Injector, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from "@angular/core";
 import { Subject } from "rxjs";
 import { getDynamicSentence } from '../../utility'
 import { arrElement, findSubsequences } from "./algorithm";
 import { ArrayElementComponent } from "./array-element/array-element.component";
 import { solution } from "./solution";
 import {Clipboard} from '@angular/cdk/clipboard';
+import { ILog } from "src/app/shared/history/history.component";
+import { NumbersChangeService } from "src/app/services/numbersChange.service";
 
 @Component({
     selector: 'non-decreasing-subsequences',
@@ -13,11 +15,12 @@ import {Clipboard} from '@angular/cdk/clipboard';
 })
 
 export class NonDecreasingSubsequencesComponent implements OnInit{
-    proplemStatement = `Given an integer array nums, return all the different possible non-decreasing subsequences of 
+    proplemStatement = `Given an integer array nums, return all the different possible non-decreasing subsequences of
     the given array with at least two elements. You may return the answer in any order.`;
 
     arr: arrElement[] = [];
     numbers: number[] = [4,6,7,7]
+    numbersStr = this.numbers.join('')
     current: arrElement[] = [];
     sequences: string[][] = [];
     set: Set<any> = new Set();
@@ -29,14 +32,18 @@ export class NonDecreasingSubsequencesComponent implements OnInit{
 
     @ViewChild('container', {static: true}) container!: ElementRef;
     @ViewChild('solution', {static: true}) solution!: ElementRef;
-    @ViewChild('input') input!: ElementRef
+    @ViewChild('input') input!: ElementRef;
+
 
     isCopied: boolean = false;
-    isEditing: boolean = false
+    isEditing: boolean = false;
 
-    
+    @Output()
+    numbersChangeEvt: EventEmitter<ILog> = new EventEmitter();
+
+    numbersChangeService!: NumbersChangeService
     constructor(private injector: Injector, private clipboard: Clipboard){
-        
+      this.numbersChangeService = injector.get(NumbersChangeService)
     }
     ngOnInit(): void {
         this.setProplemStatement();
@@ -60,8 +67,15 @@ export class NonDecreasingSubsequencesComponent implements OnInit{
     handleKeyPress(e: KeyboardEvent) {
         if (e.key === 'Enter') {
             this.isEditing = false;
-            this.numbers = this.input.nativeElement.value.split('').map((el: string) => +el);
-            this.updateArray()
+            const val = this.input.nativeElement.value
+            if (val.trim().length)  {
+              const prevNumbers = this.numbersStr;
+              this.numbers = String(this.numbersStr).split('').map((el: string) => +el);
+              this.updateArray();
+              const currentNumbers = this.numbersStr;;
+              const time = new Date();
+              this.numbersChangeService.emitEvent({prevValue: prevNumbers, currValue: currentNumbers, time })
+          }
         }
     }
 
@@ -71,7 +85,7 @@ export class NonDecreasingSubsequencesComponent implements OnInit{
         for (const n of this.numbers) {
             this.arr.push({val: n, isActive: false, isPrevious: false})
         }
-        
+
         this.runAlgo();
     }
 
@@ -81,7 +95,7 @@ export class NonDecreasingSubsequencesComponent implements OnInit{
             this.updateArray()
             this.isProblemStatmentReady = true;
         });
-        
+
     }
 
     async runAlgo() {
