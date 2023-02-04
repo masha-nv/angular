@@ -9,6 +9,6 @@ export class NumbersChangeService {
   evtEmitter = new EventEmitter<ILog>();
 
   emitEvent(data: ILog) {
-    this.evtEmitter.emit(data);
+    this.evtEmitter.emit(data)
   }
 }
