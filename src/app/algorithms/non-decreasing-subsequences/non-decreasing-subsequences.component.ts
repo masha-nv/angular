@@ -42,7 +42,7 @@ export class NonDecreasingSubsequencesComponent implements OnInit{
     numbersChangeEvt: EventEmitter<ILog> = new EventEmitter();
 
     numbersChangeService!: NumbersChangeService
-    constructor(private injector: Injector, private clipboard: Clipboard){
+    constructor(injector: Injector, private clipboard: Clipboard){
       this.numbersChangeService = injector.get(NumbersChangeService)
     }
     ngOnInit(): void {
@@ -69,7 +69,7 @@ export class NonDecreasingSubsequencesComponent implements OnInit{
             this.isEditing = false;
             const val = this.input.nativeElement.value
             if (val.trim().length)  {
-              const prevNumbers = this.numbersStr;
+              const prevNumbers = this.arr.map(obj => obj.val).join('');
               this.numbers = String(this.numbersStr).split('').map((el: string) => +el);
               this.updateArray();
               const currentNumbers = this.numbersStr;;
