@@ -1,0 +1,10 @@
+<div  class="run-again">
+  <button mat-button (click)="handleRunAlgo()" [disabled]="isRunning">Run Algorythm</button>
+</div>
+<div class="numbers-grid">
+  <div *ngFor="let number of numbers" class="cell"
+  [ngStyle]="{backgroundColor: number.backgroundColor}"
+  [ngClass]="{'is-current' : number.isCurrElement ? true : false}">
+    {{number.index}}
+  </div>
+</div>

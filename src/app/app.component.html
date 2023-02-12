@@ -1,8 +1,12 @@
 <mat-sidenav-container fullscreen #matToolbar>
   <mat-sidenav>
     <mat-nav-list>
-      <a mat-list-item routerLink="/non-decreasing-subsequences">
+      <a mat-list-item routerLink="/non-decreasing-subsequences" routerLinkActive="active">
         <span>Non-decreasing Subsequence </span>
+      </a>
+
+      <a mat-list-item routerLink="/sieve-of-eratosthenes" routerLinkActive="active">
+        <span>Sieve of Eratosthenes</span>
       </a>
     </mat-nav-list>
 
@@ -12,6 +16,8 @@
     <button mat-icon-button (click)="matToolbar.open()">
       <mat-icon>menu</mat-icon>
     </button>
+
+
   </mat-toolbar>
 
   <router-outlet></router-outlet>

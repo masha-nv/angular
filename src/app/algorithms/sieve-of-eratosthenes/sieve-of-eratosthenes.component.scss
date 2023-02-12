@@ -1,0 +1,65 @@
+@import '../../../styles/helpers/colors';
+
+.numbers-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  width: fit-content;
+  margin: 5rem auto;
+  gap: .5rem;
+}
+
+.cell {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: $light-grey;
+  color: $white;
+  font-size: 1.3rem;
+  transition: all .5s ease-in-out;
+  &.is-current {
+    animation: animateCurrElement .6s ease-in-out 0s 1 alternate;
+  }
+  &:hover {
+    transform: scale(.99);
+  }
+  position: relative;
+}
+
+.cell:nth-child(4n) {
+  border-right: none;
+}
+
+.run-again {
+  position: relative;
+  top: -3rem;
+  & button {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+
+@keyframes animateCurrElement {
+  0% {
+    transform: rotate(2deg);
+  }
+  20% {
+    transform: rotate(-3deg);
+  }
+  25% {
+    transform: rotate(2deg);
+  }
+  75% {
+    transform: rotate(-1deg);
+  }
+  100% {
+    transform: rotate(0);
+  }
+}
+
+
+

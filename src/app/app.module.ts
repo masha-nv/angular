@@ -9,7 +9,6 @@ import { SharedModule } from './shared/shared.modue';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
-import {MatButtonModule} from '@angular/material/button';
 import {MatListModule} from '@angular/material/list';
 
 @NgModule({
@@ -25,7 +24,6 @@ import {MatListModule} from '@angular/material/list';
     MatToolbarModule,
     MatSidenavModule,
     MatIconModule,
-    MatButtonModule,
     MatListModule
   ],
   providers: [],
