@@ -1,0 +1,9 @@
+<mat-button-toggle-group *ngIf="statusActions$ | async as statuses">
+  <mat-button-toggle (click)="changeStatus(statuses[0])">{{statuses[0]}}</mat-button-toggle>
+  <mat-button-toggle [matMenuTriggerFor]="dropDownMenu">
+    <mat-icon>arrow_drop_down</mat-icon>
+  </mat-button-toggle>
+  <mat-menu #dropDownMenu="matMenu">
+    <button *ngFor="let status of statuses | slice: 1 " mat-menu-item (click)="changeStatus(status)">{{status | splitCaps}}</button>
+  </mat-menu>
+</mat-button-toggle-group>
