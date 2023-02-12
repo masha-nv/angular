@@ -1,5 +1,4 @@
-import { Component, ElementRef, Injector, OnInit, ViewChild } from '@angular/core';
-import { MockService } from './services/html-string.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',

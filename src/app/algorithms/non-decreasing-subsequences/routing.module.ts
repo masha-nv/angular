@@ -2,7 +2,7 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { NonDecreasingSubsequencesComponent } from "./non-decreasing-subsequences.component";
 
-const routs: Routes = [
+const routes: Routes = [
     {
         path: '',
         component: NonDecreasingSubsequencesComponent
@@ -10,7 +10,7 @@ const routs: Routes = [
 ]
 
 @NgModule({
-    imports: [RouterModule.forChild(routs)]
+    imports: [RouterModule.forChild(routes)]
 })
 
 export class RoutingModule{}
