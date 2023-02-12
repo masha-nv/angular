@@ -1,5 +1,10 @@
 <div class="component-wrapper">
+  <div class="header-wrapper">
     <h1 >Non-decreasing Subsequences</h1>
+    <span class="status" [title]="status">{{status | splitCaps}}</span>
+    <app-button-status (onStatusChange)="handleStatusChange($event)"></app-button-status>
+  </div>
+
 
     <p class="container" #container></p>
     <mat-icon *ngIf="isProblemStatmentReady && !isCopied" class="copy" matTooltip="Copy Text"
@@ -22,6 +27,7 @@
 
     </div>
     <div class="history-section">
+      <app-button-expand></app-button-expand>
       <h1>History</h1>
       <app-history></app-history>
     </div>

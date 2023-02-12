@@ -1,3 +1,6 @@
+@import '../../../styles/components/status';
+
+
 .component-wrapper {
     margin: 5rem;
 }
@@ -38,4 +41,14 @@ input::-webkit-inner-spin-button {
 .history-section {
   position: fixed;
   top: 600px;
+}
+
+.status {
+  @extend %status-label;
+  display: inline-block;
+}
+
+app-button-status {
+  display: inline-block;
+  margin-left: 80%;
 }

@@ -1,0 +1,19 @@
+@import '../helpers/colors';
+
+%status-label {
+  display: inline-block;
+  color: $white;
+  padding: 7px 15px;
+  width: fit-content;
+  border-radius: 50000px;
+  &[title='Open'] {
+    background-color: $dark-blue;
+  }
+  &[title='Closed'] {
+    background-color: $grey;
+  }
+  &[title='InProgress'],
+  &[title='In Progress'] {
+    background-color: $mid-blue;
+  }
+}

@@ -7,6 +7,7 @@ import { solution } from "./solution";
 import {Clipboard} from '@angular/cdk/clipboard';
 import { ILog } from "src/app/shared/history/history.component";
 import { NumbersChangeService } from "src/app/services/numbersChange.service";
+import { status } from "src/app/shared/components/button-status/button-status.component";
 
 @Component({
     selector: 'non-decreasing-subsequences',
@@ -28,6 +29,7 @@ export class NonDecreasingSubsequencesComponent implements OnInit{
     viewSolution: boolean = false;
     handleViewSolution = new Subject()
     isProblemStatmentReady: boolean = false;
+    status: string = status.Open
 
 
     @ViewChild('container', {static: true}) container!: ElementRef;
@@ -48,6 +50,10 @@ export class NonDecreasingSubsequencesComponent implements OnInit{
     ngOnInit(): void {
         this.setProplemStatement();
         this.setSolution()
+    }
+
+    handleStatusChange(status: string) {
+      this.status = status
     }
 
     copyProblemStatement(text: string) {
