@@ -1,7 +1,7 @@
 import { ICell } from "./cell/cell.component";
 
 let found = false;
-export async function findBunny(originalBunnyPos: number, arr: ICell[]) {
+export async function findBunny(originalBunnyPos: number, arr: ICell[]): Promise<true | any>  {
   console.log('originalBunnyPos', originalBunnyPos)
   let bunny = originalBunnyPos, i = 0, prevBunny = bunny;
   while (i<arr.length) {
@@ -15,14 +15,14 @@ export async function findBunny(originalBunnyPos: number, arr: ICell[]) {
       }, 1000)
     })
 
-
     arr[i].isI = true;
     arr[bunny].isBunny = true
     console.log(`bunny is at ${bunny}`)
     if (i === bunny) {
       found = true;
       console.log(`found bunny at pos ${i}`);
-      break
+      // break
+      return true
     }
     i++;
     prevBunny = bunny;
@@ -37,7 +37,7 @@ export async function findBunny(originalBunnyPos: number, arr: ICell[]) {
   }
 
 
-  if (found) return;
+  if (found) return true;
   console.log(`tough luck, starting at odd index`, originalBunnyPos);
   bunny = originalBunnyPos;
   prevBunny = bunny
@@ -59,7 +59,8 @@ export async function findBunny(originalBunnyPos: number, arr: ICell[]) {
     if (i === bunny) {
       found = true;
       console.log(`found bunny at pos ${i}`)
-      break;
+      // break;
+      return true
     }
     if ( i >= arr.length) break;
     i++;

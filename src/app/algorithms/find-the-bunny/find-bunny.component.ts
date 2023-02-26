@@ -11,13 +11,16 @@ const originalBunnyPos = Math.floor(Math.random()*LENGTH);
 })
 export class FindBunnyComponent implements OnInit{
   arr: ICell[] = Array(LENGTH).fill(0).map(el => ({isBunny: false, isI: false}))
-  bunny = originalBunnyPos
+  bunny = originalBunnyPos;
+  result!: boolean
+
   ngOnInit(): void {
     this.initAlgo()
   }
 
   async initAlgo() {
-    await findBunny(this.bunny, this.arr);
+    this.arr = Array(LENGTH).fill(0).map(el => ({isBunny: false, isI: false}));
+    this.result = await findBunny(this.bunny, this.arr);
   }
 
 }
