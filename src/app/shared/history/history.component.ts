@@ -1,9 +1,10 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Injector, Input, OnInit, Output } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NumbersChangeService } from 'src/app/services/numbersChange.service';
 
 export interface ILog {
-  prevValue: any,
-  currValue: any,
+  prevValue: string,
+  currValue: string,
   time: Date
 }
 
@@ -15,7 +16,7 @@ export interface ILog {
 export class HistoryComponent implements OnInit {
   logs: ILog[] = [];
 
-  constructor(private numbersChangeService: NumbersChangeService){}
+  constructor(private numbersChangeService: NumbersChangeService, private injector: Injector){}
 
   ngOnInit(): void {
     this.numbersChangeService.evtEmitter.subscribe(val => this.logs.push(val))

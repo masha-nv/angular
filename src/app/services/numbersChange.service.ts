@@ -6,9 +6,11 @@ import { ILog } from "../shared/history/history.component";
 })
 
 export class NumbersChangeService {
+  log!: ILog
   evtEmitter = new EventEmitter<ILog>();
 
   emitEvent(data: ILog) {
+    this.log = data
     this.evtEmitter.emit(data)
   }
 }

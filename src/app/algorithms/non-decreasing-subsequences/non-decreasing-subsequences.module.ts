@@ -25,7 +25,8 @@ import { FormsModule } from "@angular/forms";
       MatIconModule,
       MatInputModule,
       SharedModule,
-      FormsModule
+      FormsModule,
+      RouterModule
     ],
     exports: [RouterModule]
 })
