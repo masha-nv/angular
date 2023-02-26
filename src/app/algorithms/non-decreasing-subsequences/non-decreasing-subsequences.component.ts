@@ -8,6 +8,7 @@ import {Clipboard} from '@angular/cdk/clipboard';
 import { ILog } from "src/app/shared/history/history.component";
 import { NumbersChangeService } from "src/app/services/numbersChange.service";
 import { status } from "src/app/shared/components/button-status/button-status.component";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
     selector: 'non-decreasing-subsequences',
@@ -44,7 +45,7 @@ export class NonDecreasingSubsequencesComponent implements OnInit{
     numbersChangeEvt: EventEmitter<ILog> = new EventEmitter();
 
     numbersChangeService!: NumbersChangeService
-    constructor(injector: Injector, private clipboard: Clipboard){
+    constructor(injector: Injector, private clipboard: Clipboard, private route: ActivatedRoute){
       this.numbersChangeService = injector.get(NumbersChangeService)
     }
     ngOnInit(): void {

@@ -1,0 +1,8 @@
+<div class="container">
+
+  <ng-container *ngFor="let i of arr; let idx = index">
+    <app-cell [isI]="arr[idx].isI" [isBunny]="arr[idx].isBunny"></app-cell>
+  </ng-container>
+
+
+</div>
