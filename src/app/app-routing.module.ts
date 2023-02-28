@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { WindowCachesComponent } from './random/window-caches.component';
 import { UserResolver } from './resolvers/user-resolver';
 
 const routes: Routes = [
@@ -17,6 +18,15 @@ const routes: Routes = [
   {
     path: 'find-bunny',
     loadChildren: () => import('./algorithms/find-the-bunny/find-bunny.module').then(m => m.FindBunnyModule)
+  },
+  {
+    path: 'random',
+    children: [
+      {
+        path: 'window-caches',
+        component: WindowCachesComponent
+      }
+    ]
   }
 ];
 

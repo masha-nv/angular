@@ -12,11 +12,13 @@ import { MatIconModule } from '@angular/material/icon';
 import {MatListModule} from '@angular/material/list';
 import { HttpClientModule } from '@angular/common/http';
 import { HistoryItemDetailsComponent } from './shared/history-item-details/history-item-details.component';
+import { WindowCachesComponent } from './random/window-caches.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     HistoryItemDetailsComponent,
+    WindowCachesComponent
   ],
   imports: [
     BrowserModule,
